@@ -40,7 +40,7 @@ component {
 	function mcDateFormat(required string date) {
 		if ( len( arguments.date ) && isDate( arguments.date ) ) {
 			arguments.date = dateConvert( "local2utc", arguments.date );
-			arguments.date = dateFormat( arguments.date, "YYYY-MM-DD" ) & " " & timeFormat( arguments.date, "HH:mm:ss" );
+			arguments.date = dateTimeFormat( arguments.date, "yyyy-mm-dd HH:nn:ss" );
 		} else {
 			arguments.date = "";
 		}
