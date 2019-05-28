@@ -1,17 +1,30 @@
 {
-	"name":"cfalgolia",
+    "name":"cfalgolia",
     "slug":"cfalgolia",
-	"version":"0.5.0",
+    "version":"0.5.1",
     "author":"Jordan Clark <jordanclark@gmail.com>",
-    "keywords":["algolia","search","api","rest"],
+    "keywords":[
+        "algolia",
+        "search",
+        "api",
+        "rest"
+    ],
     "shortDescription":"API client for algolia.com",
-	"description":"Algolia is a pretty cool search engine as a service, it's super fast and pretty easy to use.",
+    "description":"Algolia is a pretty cool search engine as a service, it's super fast and pretty easy to use.",
     "type":"modules",
-    "location":"jordanclark/cfaftership#v0.5.0",
-    "repository":{"URL":"https://github.com/jordanclark/cfalgolia.git","type":"GIT"},
-	"homepage":"https://github.com/jordanclark/cfalgolia",
-	"bugs":"https://github.com/jordanclark/cfalgolia/issues",
-    "license":[{"type":"Apache-2.0","URL":"https://github.com/jordanclark/cfalgolia/blob/master/LICENSE"}],
+    "location":"jordanclark/cfaftership#v0.5.1",
+    "repository":{
+        "URL":"https://github.com/jordanclark/cfalgolia.git",
+        "type":"GIT"
+    },
+    "homepage":"https://github.com/jordanclark/cfalgolia",
+    "bugs":"https://github.com/jordanclark/cfalgolia/issues",
+    "license":[
+        {
+            "type":"Apache-2.0",
+            "URL":"https://github.com/jordanclark/cfalgolia/blob/master/LICENSE"
+        }
+    ],
     "private":false,
     "ignore":[
         "**/.*",
