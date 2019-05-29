@@ -506,20 +506,14 @@ component {
 		this.debugLog( http );
 		out.response = toString( http.fileContent );
 		// this.debugLog( out.response );
-		//  RESPONSE CODE ERRORS 
-		if ( !structKeyExists( http, "responseHeader" ) || !structKeyExists( http.responseHeader, "Status_Code" ) || http.responseHeader.Status_Code == "" ) {
-			out.statusCode = 500;
-		} else {
-			out.statusCode = http.responseHeader.Status_Code;
-		}
-		this.debugLog( out.statusCode );
+			out.statusCode = http.responseHeader.Status_Code ?: 500;
+			this.debugLog( out.statusCode );
 		if ( left( out.statusCode, 1 ) == 5 ) {
 			arrayAppend( this.apiUrlPool, this.apiUrl );
 			this.apiUrl = this.apiUrlPool[ 1 ];
 			arrayDeleteAt( this.apiUrlPool, 1 );
 		}
 		if ( left( out.statusCode, 1 ) == 4 || left( out.statusCode, 1 ) == 5 ) {
-			out.success = false;
 			out.error = "status code error: #out.statusCode#";
 		} else if ( out.response == "Connection Timeout" || out.response == "Connection Failure" ) {
 			out.error = out.response;
