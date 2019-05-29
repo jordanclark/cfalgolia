@@ -6,16 +6,13 @@ component {
 	,	required string adminKey
 	,	required string apiUrl= "https://<appid>.algolia.net;https://<appid>-1.algolianet.com;https://<appid>-2.algolianet.com;https://<appid>-3.algolianet.com"
 	,	numeric httpTimeOut = 5
-	,	boolean debug= false
+	,	boolean debug= ( request.debug ?: false )
 	) {
 		this.appID = arguments.appID;
 		this.searchKey = arguments.searchKey;
 		this.adminKey = arguments.adminKey;
 		this.httpTimeOut = arguments.httpTimeOut;
 		this.debug = arguments.debug;
-		if ( structKeyExists( request, "debug" ) && request.debug == true ) {
-			this.debug = request.debug;
-		}
 		this.apiUrlPool = listToArray( replaceNoCase( arguments.apiUrl, "<appid>", this.appID, "all" ), ";" );
 		this.apiUrl = this.apiUrlPool[ 1 ];
 		arrayDeleteAt( this.apiUrlPool, 1 );
