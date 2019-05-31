@@ -4,7 +4,7 @@ component {
 		required string appID
 	,	required string searchKey
 	,	required string adminKey
-	,	required string apiUrl= "https://<appid>.algolia.net;https://<appid>-1.algolianet.com;https://<appid>-2.algolianet.com;https://<appid>-3.algolianet.com"
+	,	string apiUrl= "https://<appid>.algolia.net;https://<appid>-1.algolianet.com;https://<appid>-2.algolianet.com;https://<appid>-3.algolianet.com"
 	,	numeric httpTimeOut = 5
 	,	boolean debug= ( request.debug ?: false )
 	) {
@@ -506,8 +506,8 @@ component {
 		this.debugLog( http );
 		out.response = toString( http.fileContent );
 		// this.debugLog( out.response );
-			out.statusCode = http.responseHeader.Status_Code ?: 500;
-			this.debugLog( out.statusCode );
+		out.statusCode = http.responseHeader.Status_Code ?: 500;
+		this.debugLog( out.statusCode );
 		if ( left( out.statusCode, 1 ) == 5 ) {
 			arrayAppend( this.apiUrlPool, this.apiUrl );
 			this.apiUrl = this.apiUrlPool[ 1 ];
@@ -517,7 +517,7 @@ component {
 			out.error = "status code error: #out.statusCode#";
 		} else if ( out.response == "Connection Timeout" || out.response == "Connection Failure" ) {
 			out.error = out.response;
-		} else if ( http.responseHeader.Status_Code == "200" ) {
+		} else if ( left( out.statusCode, 1 ) == 2 ) {
 			out.success = true;
 		}
 		//  parse response 
