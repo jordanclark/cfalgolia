@@ -11,5 +11,12 @@ Algolia.com ColdFusion Rest API Client
 
 Algolia is a pretty cool search engine as a service, it's super fast and pretty easy to use.
 
-# API documentation
+## To Install
+Run the following from commandbox:
+`box install cfalgolia`
+
+## Changes
+2019-05-29 Open source release
+
+## API documentation
 https://www.algolia.com/doc/rest-api/search/

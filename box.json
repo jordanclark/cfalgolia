@@ -12,7 +12,7 @@
     "shortDescription":"API client for algolia.com",
     "description":"Algolia is a pretty cool search engine as a service, it's super fast and pretty easy to use.",
     "type":"modules",
-    "location":"jordanclark/cfaftership#v0.5.4",
+    "location":"jordanclark/cfalgolia#v0.5.4",
     "repository":{
         "URL":"https://github.com/jordanclark/cfalgolia.git",
         "type":"GIT"
@@ -32,7 +32,7 @@
         "/tests/"
     ],
     "scripts":{
-        "postVersion":"package set location='jordanclark/cfaftership#v`package version`'",
+        "postVersion":"package set location='jordanclark/cfalgolia#v`package version`'",
         "onRelease":"publish",
         "postPublish":"!git push --follow-tags"
     }
