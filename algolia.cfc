@@ -574,7 +574,7 @@ component {
 
 	string function listRemove(required string lInput, required string sMatch, string sDelims= ",") {
 		var bFound = true;
-		while ( condition="bFound == true" ) {
+		while( bFound  ) {
 			bFound = listFindNoCase( lInput, sMatch, sDelims );
 			if ( !bFound ) {
 				break;
