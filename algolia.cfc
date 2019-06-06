@@ -492,7 +492,7 @@ component {
 			out.json = arguments.json;
 		}
 		this.debugLog( arguments );
-		this.debugLog( out );
+		//this.debugLog( out );
 		cftimer( type="debug", label="algolia request" ) {
 			cfhttp( result="http", method=out.verb, url=out.requestUrl, charset="UTF-8", throwOnError=false, timeOut=this.httpTimeOut ) {
 				cfhttpparam( name="X-Algolia-API-Key", type="header", value=this.adminKey );
@@ -503,7 +503,7 @@ component {
 				}
 			}
 		}
-		this.debugLog( http );
+		//this.debugLog( http );
 		out.response = toString( http.fileContent );
 		// this.debugLog( out.response );
 		out.statusCode = http.responseHeader.Status_Code ?: 500;
