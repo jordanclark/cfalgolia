@@ -503,7 +503,7 @@ component {
 				}
 			}
 		}
-		//this.debugLog( http );
+		// this.debugLog( http );
 		out.response = toString( http.fileContent );
 		// this.debugLog( out.response );
 		out.statusCode = http.responseHeader.Status_Code ?: 500;
@@ -520,7 +520,7 @@ component {
 		} else if ( left( out.statusCode, 1 ) == 2 ) {
 			out.success = true;
 		}
-		//  parse response 
+		// parse response 
 		if ( left( out.response, 1 ) == "{" ) {
 			try {
 				out.response = deserializeJSON( out.response );
