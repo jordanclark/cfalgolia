@@ -584,29 +584,34 @@ component {
 		return lInput;
 	}
 
-	struct function formatData(required struct data, string sCols= structKeyList( arguments.data )) {
-		var sField = "";
+	struct function formatData( required struct data, fields= structKeyArray( arguments.data ) ) {
+		var field = "";
 		var stOutput = {};
 		var v = 0;
-		for ( sField in sCols ) {
-			v = arguments.data[ sField ];
+		if( isSimpleValue( arguments.fields ) ) {
+			arguments.fields= listToArray( arguments.fields );
+		}
+		for ( field in arguments.fields ) {
+			v = arguments.data[ field ];
 			if ( left( v, 1 ) == "|" ) {
 				if ( len( v ) > 1 ) {
-					stOutput[ sField ] = listToArray( v, "|" );
+					stOutput[ field ] = listToArray( v, "|" );
 				}
 			} else if ( len( v ) ) {
-				stOutput[ sField ] = v;
+				stOutput[ field ] = v;
 			}
 		}
 		return stOutput;
 	}
 
-	string function hashData(required struct data, string sCols= qInput.columnList) {
-		var sField = "";
+	string function hashData( required struct data, fields= structKeyArray( arguments.data ) ) {
+		var field = "";
 		var buffer = createObject( "java", "java.lang.StringBuffer" ).init();
-		var v = 0;
-		for ( sField in sCols ) {
-			buffer.append( arguments.data[ sField ][ nRow ] );
+		if( isSimpleValue( arguments.fields ) ) {
+			arguments.fields= listToArray( arguments.fields );
+		}
+		for ( field in arguments.fields ) {
+			buffer.append( arguments.data[ field ] );
 		}
 		return hash( buffer.toString() );
 	}
