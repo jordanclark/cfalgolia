@@ -507,7 +507,6 @@ component {
 		out.response = toString( http.fileContent );
 		// this.debugLog( out.response );
 		out.statusCode = http.responseHeader.Status_Code ?: 500;
-		this.debugLog( out.statusCode );
 		if ( left( out.statusCode, 1 ) == 5 ) {
 			arrayAppend( this.apiUrlPool, this.apiUrl );
 			this.apiUrl = this.apiUrlPool[ 1 ];
@@ -537,6 +536,7 @@ component {
 		if ( len( out.error ) ) {
 			out.success = false;
 		}
+		this.debugLog( out.statusCode & " " & out.error );
 		if ( !out.success ) {
 			this.debugLog( out );
 		}
