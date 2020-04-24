@@ -6,8 +6,9 @@ component {
 	,	required string adminKey
 	,	string apiUrl= "https://<appid>.algolia.net;https://<appid>-1.algolianet.com;https://<appid>-2.algolianet.com;https://<appid>-3.algolianet.com"
 	,	numeric httpTimeOut = 5
-	,	boolean debug= ( request.debug ?: false )
+	,	boolean debug
 	) {
+		arguments.debug = ( arguments.debug ?: request.debug ?: false );
 		this.appID = arguments.appID;
 		this.searchKey = arguments.searchKey;
 		this.adminKey = arguments.adminKey;
@@ -29,7 +30,12 @@ component {
 				request.log( arguments.input );
 			}
 		} else if( this.debug ) {
-			cftrace( text=( isSimpleValue( arguments.input ) ? arguments.input : "" ), var=arguments.input, category="Algolia", type="information" );
+			var info= ( isSimpleValue( arguments.input ) ? arguments.input : serializeJson( arguments.input ) );
+			cftrace(
+				var= "info"
+			,	category= "Algolia"
+			,	type= "information"
+			);
 		}
 		return;
 	}

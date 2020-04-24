@@ -16,7 +16,8 @@ Run the following from commandbox:
 `box install cfalgolia`
 
 ## Changes
-2019-05-29 Open source release
+#### 2020-04-10 Added support for Adobe ColdFusion 2018, ColdFusion 2016 & ColdFusion 11, thanks CommandBox!
+#### 2019-05-29 Open source release
 
 ## API documentation
 https://www.algolia.com/doc/rest-api/search/
