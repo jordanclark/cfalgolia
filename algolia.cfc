@@ -254,7 +254,7 @@ component {
 		if ( isSimpleValue( arguments.facetFilters ) && len( arguments.facetFilters ) ) {
 			params[ "facetFilters" ] = arguments.facetFilters;
 		} else if ( isArray( arguments.facetFilters ) && arrayLen( arguments.facetFilters ) ) {
-			params[ "facetFilters" ] = serializeJSON( arguments.facetFilters );
+			params[ "facetFilters" ] = serializeJSON( arguments.facetFilters, false, false );
 		}
 		if ( isNumeric( arguments.maxValuesPerFacet ) ) {
 			params[ "maxValuesPerFacet" ] = arguments.maxValuesPerFacet;
@@ -262,7 +262,7 @@ component {
 		if ( isSimpleValue( arguments.numericFilters ) && len( arguments.numericFilters ) ) {
 			params[ "numericFilters" ] = arguments.numericFilters;
 		} else if ( isArray( arguments.numericFilters ) && arrayLen( arguments.numericFilters ) ) {
-			params[ "numericFilters" ] = serializeJSON( arguments.numericFilters );
+			params[ "numericFilters" ] = serializeJSON( arguments.numericFilters, false, false );
 		}
 		if ( len( arguments.facets ) ) {
 			params[ "facets" ] = arguments.facets;
@@ -307,7 +307,7 @@ component {
 			params[ "analytics" ] = arguments.analytics;
 		}
 	//	if( len( arguments.analyticsTags ) ) {
-	//		params[ "analyticsTags" ] = serializeJSON( listToArray( arguments.analyticsTags ) );
+	//		params[ "analyticsTags" ] = serializeJSON( listToArray( arguments.analyticsTags ), false, false );
 	//	}
 		if ( !arguments.synonyms ) {
 			params[ "synonyms" ] = arguments.synonyms;
@@ -384,12 +384,12 @@ component {
 		if ( isSimpleValue( arguments.facetFilters ) && len( arguments.facetFilters ) ) {
 			params[ "facetFilters" ] = arguments.facetFilters;
 		} else if ( isArray( arguments.facetFilters ) && arrayLen( arguments.facetFilters ) ) {
-			params[ "facetFilters" ] = serializeJSON( arguments.facetFilters );
+			params[ "facetFilters" ] = serializeJSON( arguments.facetFilters, false, false );
 		}
 		if ( isSimpleValue( arguments.numericFilters ) && len( arguments.numericFilters ) ) {
 			params[ "numericFilters" ] = arguments.numericFilters;
 		} else if ( isArray( arguments.numericFilters ) && arrayLen( arguments.numericFilters ) ) {
-			params[ "numericFilters" ] = serializeJSON( arguments.numericFilters );
+			params[ "numericFilters" ] = serializeJSON( arguments.numericFilters, false, false );
 		}
 		if ( arguments.attributesToRetrieve != "*" ) {
 			params[ "attributesToRetrieve" ] = arguments.attributesToRetrieve;
@@ -492,7 +492,7 @@ component {
 		,	requestUrl = this.apiUrl & listRest( arguments.api, " " )
 		};
 		if ( isStruct( arguments.json ) ) {
-			out.json = serializeJSON( arguments.json );
+			out.json = serializeJSON( arguments.json, false, false );
 			out.json = reReplace( out.json, "[#chr(1)#-#chr(7)#|#chr(11)#|#chr(14)#-#chr(31)#]", "", "all" );
 		} else if ( isSimpleValue( arguments.json ) && len( arguments.json ) ) {
 			out.json = arguments.json;
