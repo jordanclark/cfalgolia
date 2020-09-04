@@ -197,6 +197,7 @@ component {
 	,	string optionalWords= ""
 	,	numeric minProximity= 1
 	,	string verb= "GET"
+	,	string userToken= ""
 	) {
 		arguments.page = 0;
 		arguments.hitsPerPage = 1;
@@ -236,6 +237,7 @@ component {
 	,	string optionalWords= ""
 	,	numeric minProximity= 1
 	,	string verb= "GET"
+	,	string userToken= ""
 	) {
 		var out = "";
 		var params = {};
@@ -321,6 +323,9 @@ component {
 		if ( arguments.minProximity != 1 ) {
 			params[ "minProximity" ] = arguments.minProximity;
 		}
+		if ( len( arguments.userToken ) ) {
+			params[ "userToken" ] = arguments.userToken;
+		}
 		var qs = this.structToQueryString( params );
 		if ( arguments.verb == "POST" ) {
 			var json = { "params"= replace( qs, "?", "" ) };
@@ -363,6 +368,7 @@ component {
 	,	boolean replaceSynonymsInHighlight= true
 	,	string optionalWords= ""
 	,	numeric minProximity= 1
+	,	string userToken= ""
 	) {
 		var out = "";
 		var params = {};
@@ -445,6 +451,9 @@ component {
 		if ( arguments.minProximity != 1 ) {
 			params[ "minProximity" ] = arguments.minProximity;
 		}
+		if ( len( arguments.userToken ) ) {
+			params[ "userToken" ] = arguments.userToken;
+		}
 		var qs = this.structToQueryString( params );
 		out = this.apiRequest(
 			api= "GET /1/indexes/#arguments.index#/browse#qs#"
@@ -470,6 +479,7 @@ component {
 	,	boolean synonyms= true
 	,	string optionalWords= ""
 	,	numeric minProximity= 1
+	,	string userToken= ""
 	) {
 		arguments.page = 0;
 		structDelete( arguments, "cursor" );
